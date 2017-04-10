@@ -5,57 +5,71 @@
 */
 
 CREATE TABLE ITEM (
+	INo					VARCHAR(9) 					NOT NULL					 PRIMARY KEY, 
 	Name					VARCHAR(15)					NOT NULL,
-	Type					VARCHAR(15)					NOT NULL,
-	INo					INT							NOT NULL					auto_increment PRIMARY KEY,
-	CalDate				DATE							NOT NULL,
-	Status				VARCHAR(15)					NOT NULL,
-	Gauge					FLOAT(6,3)					NOT NULL,
-	Length				FLOAT(6,3)					NOT NULL,
-	Resist				INT(12)						NOT NULL, 
-	Protocol				VARCHAR(15)					NOT NULL,
-	Capac					INT(12)						NOT NULL,
-	Voltage				VARCHAR(15)					NOT NULL,
-	Amper					VARCHAR(15)					NOT NULL,
+	IType					VARCHAR(15),
+	CalDate				DATE,
+	Status				VARCHAR(15),
+	Gauge					FLOAT(6,3),
+	Length				FLOAT(6,3),
+	Resist				DECIMAL(24,12),	
+	Protocol				VARCHAR(15),
+	Capac					DECIMAL(24,12),	
+	Voltage				DECIMAL(24,12),
+	Amper					DECIMAL(24,12),
+	Power					DECIMAL(24,12),
 	TFlag					BIT(1)						NOT NULL,
 	CFlag					BIT(1)						NOT NULL,
 	LCFlag				BIT(1)						NOT NULL
 );
 
 CREATE TABLE STORAGE_AREA (
-	StoNo					INT							NOT NULL					auto_increment PRIMARY KEY,
+	StoNo					VARCHAR(3)					NOT NULL					PRIMARY KEY,
 	OFlag					BIT(1)						NOT NULL,
 	PFlag					BIT(1)						NOT NULL,
 	BFlag					BIT(1)						NOT NULL,
-	OLabel				BIT(1)						NOT NULL,
-	Plabel				BIT(1)						NOT NULL,
-	BLabel				BIT(1)						NOT NULL,
+	OLabel				CHAR(1),
+	Plabel				CHAR(1),
+	BLabel				CHAR(2)
 );
 
 CREATE TABLE DRAWER (
-	DNo					INT							NOT NULL					auto_increment PRIMARY KEY,
-	SNum					INT							NOT NULL,
-	Cmpt					BIT(1)						NOT NULL,
-	CONSTRIANT DRAWERSTFK
-		FOREIGN KEY(SNo) REFERENCES STORAGE_AREA(StoNo)
-			ON DELETE SET DEFAULT					ON UPDATE CASCADE
+	DNo					VARCHAR(3)					NOT NULL					PRIMARY KEY,
+
+	SNum					CHAR(3)						NOT NULL,
+		FOREIGN KEY(SNum) REFERENCES STORAGE_AREA(StoNo)
+			ON UPDATE CASCADE ON DELETE CASCADE,
+
+	Cmpt					BIT(1)						NOT NULL
 );
 
 CREATE TABLE HOOK (
-	HNo					TINYINT(2)					NOT NULL					auto_increment PRIMARY KEY,
-	SNum					INT							NOT NULL
+	HNo					TINYINT(2)					NOT NULL					PRIMARY KEY,
+	SNum					VARCHAR(3)					NOT NULL,
+		FOREIGN KEY(SNum) REFERENCES STORAGE_AREA(StoNo)
+			ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE STORED_IN (
-	INum					INT							NOT NULL,
-	SNum					INT							NOT NULL,
+	INum					VARCHAR(9)					NOT NULL,
+		FOREIGN KEY(INum) REFERENCES ITEM(INo)
+			ON UPDATE CASCADE ON DELETE CASCADE,
+
+	SNum					VARCHAR(3)					NOT NULL,
+		FOREIGN KEY(SNum) REFERENCES STORAGE_AREA(StoNo)
+			ON UPDATE CASCADE ON DELETE CASCADE,
+
 	Qty					SMALlINT						DEFAULT 0
 );
 
 
 CREATE TABLE PURCHASE_INFO (
-	INum					INT							NOT NULL,	
+	INum					VARCHAR(9)					NOT NULL,
+
+		FOREIGN KEY(INum) REFERENCES ITEM(INo)
+			ON UPDATE CASCADE ON DELETE CASCADE,
+
 	PDate					DATE							NOT NULL,
-	Price					DECIMAL(10,2),
-	Supplier				VARCHAR(15)					NOT NULL,
+	Price					DECIMAL(10,2)				NOT NULL,
+	Supplier				VARCHAR(15)					NOT NULL
 );
