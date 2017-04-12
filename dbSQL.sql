@@ -15,8 +15,11 @@
 SELECT Amount FROM ITEM WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 
 /* Expected Result:
+ * 	+--------+
  * 	| Amount |
+ * 	+--------+
  * 	| 5		|
+ * 	+--------+
  */
 
 /***************************************************************************/
@@ -29,14 +32,17 @@ SELECT Amount FROM ITEM WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 SELECT * FROM ITEM WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='Type-A';
 
 /* Expected Result:
+ * 	+-----------+
  * 	|  			|
+ *		+-----------+
  * 	| empty set	|
+ * 	+-----------+
  */
 
 /***************************************************************************/
 
  /* 
-  * Q3: "What is everything I have in a bin, and how many?" 
+  * Q3: "What is everything I have stored in a bin?"
   */
 
 /* SQL */
@@ -49,11 +55,14 @@ WHERE INo IN(
 	WHERE BFlag=1)
 );
 
-
-
 /* Expected Result:
- * 	|  			|
- * 	| empty set	|
+ * 	+-----------+
+ * 	| INO			|	...
+		+-----------+
+ * 	| BAA			|	...
+ * 	| BAB			|	...
+ * 	| BAC			|	...
+ * 	+-----------+
  */
 
 /***************************************************************************/
@@ -66,6 +75,37 @@ WHERE INo IN(
 SELECT * FROM ITEM WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='Type-A';
 
 /* Expected Result:
+ * 	+-----------+
  * 	|  			|
+ * 	+-----------+
  * 	| empty set	|
+ * 	+-----------+
  */
+
+/***************************************************************************/
+
+ /* 
+  * Q5: "WHAT'S GOIN' OWWWNN?!
+  */
+
+/* SQL */
+SELECT *
+FROM ITEM
+WHERE INo IN(
+	(SELECT INum 
+	FROM STORAGE_AREA
+	JOIN STORED_IN ON (STORAGE_AREA.StoNo = STORED_IN.SNum)
+	WHERE BFlag=1)
+);
+
+/* Expected Result:
+ * 	+-----------+
+ * 	| INO			|	...
+		+-----------+
+ * 	| BAA			|	...
+ * 	| BAB			|	...
+ * 	| BAC			|	...
+ * 	+-----------+
+ */
+
+/***************************************************************************/

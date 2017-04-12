@@ -32,10 +32,10 @@ INSERT INTO ITEM(INo, Name, IType, Amount,   CalDate, Status, Gauge, Length, Res
 	VALUES('BAC', 'Solder', 'Rosin-Core', 3, NULL, NULL, 22, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1);
 
 INSERT INTO ITEM(INo, Name, IType, Amount,   CalDate, Status, Gauge, Length, Resist, Protocol, Capac, Voltage, Amper, Power, TFlag, CFlag, LCFlag)
-	VALUES('OA-D01-1', 'Resistor', NULL, 9, NULL, NULL, NULL, NULL, 1000, NULL, NULL, NULL, NULL, 0.5, 0, 1, 0);
+	VALUES('OA-D01-1', 'Resistor', 'Through-hole', 9, NULL, NULL, NULL, NULL, 1000, NULL, NULL, NULL, NULL, 0.5, 0, 1, 0);
 
 INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resist, Protocol, Capac, Voltage, Amper, Power, TFlag, CFlag, LCFlag)
-	VALUES('OA-D03-1', 'Capacitor', NULL, 15, NULL, NULL, NULL, NULL, NULL, NULL, 0.00100, NULL, 10, NULL, 0, 1, 0);
+	VALUES('OA-D03-1', 'Capacitor', 'Electrolytic', 15, NULL, NULL, NULL, NULL, NULL, NULL, 0.00100, NULL, 10, NULL, 0, 1, 0);
 
 /* 
  * Populate STORAGE_AREA table 
@@ -74,283 +74,283 @@ INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
 
 /* Organizer A Drawers */
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A010', 'OA', 0);
+	VALUES('DA010', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A011', 'OA', 1);
+	VALUES('DA011', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A020', 'OA', 0);
+	VALUES('DA020', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A021', 'OA', 1);
+	VALUES('DA021', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A030', 'OA', 0);
+	VALUES('DA030', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A031', 'OA', 1);
+	VALUES('DA031', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A040', 'OA', 0);
+	VALUES('DA040', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A041', 'OA', 1);
+	VALUES('DA041', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A050', 'OA', 0);
+	VALUES('DA050', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A051', 'OA', 1);
+	VALUES('DA051', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A060', 'OA', 0);
+	VALUES('DA060', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A061', 'OA', 1);
+	VALUES('DA061', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A070', 'OA', 0);
+	VALUES('DA070', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A071', 'OA', 1);
+	VALUES('DA071', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A080', 'OA', 0);
+	VALUES('DA080', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A081', 'OA', 1);
+	VALUES('DA081', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A090', 'OA', 0);
+	VALUES('DA090', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A091', 'OA', 1);
+	VALUES('DA091', 'OA', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A100', 'OA', 0);
+	VALUES('DA100', 'OA', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('A101', 'OA', 1);
+	VALUES('DA101', 'OA', 1);
 
 /* Organizer B Drawers */
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B010', 'OB', 0);
+	VALUES('DB010', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B011', 'OB', 1);
+	VALUES('DB011', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B020', 'OB', 0);
+	VALUES('DB020', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B021', 'OB', 1);
+	VALUES('DB021', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B030', 'OB', 0);
+	VALUES('DB030', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B031', 'OB', 1);
+	VALUES('DB031', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B040', 'OB', 0);
+	VALUES('DB040', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B041', 'OB', 1);
+	VALUES('DB041', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B050', 'OB', 0);
+	VALUES('DB050', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B051', 'OB', 1);
+	VALUES('DB051', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B060', 'OB', 0);
+	VALUES('DB060', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B061', 'OB', 1);
+	VALUES('DB061', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B070', 'OB', 0);
+	VALUES('DB070', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B071', 'OB', 1);
+	VALUES('DB071', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B080', 'OB', 0);
+	VALUES('DB080', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B081', 'OB', 1);
+	VALUES('DB081', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B090', 'OB', 0);
+	VALUES('DB090', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B091', 'OB', 1);
+	VALUES('DB091', 'OB', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B100', 'OB', 0);
+	VALUES('DB100', 'OB', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('B101', 'OB', 1);
+	VALUES('DB101', 'OB', 1);
 
 /* Organizer C Drawers */
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C010', 'OC', 0);
+	VALUES('DC010', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C011', 'OC', 1);
+	VALUES('DC011', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C020', 'OC', 0);
+	VALUES('DC020', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C021', 'OC', 1);
+	VALUES('DC021', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C030', 'OC', 0);
+	VALUES('DC030', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C031', 'OC', 1);
+	VALUES('DC031', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C040', 'OC', 0);
+	VALUES('DC040', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C041', 'OC', 1);
+	VALUES('DC041', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C050', 'OC', 0);
+	VALUES('DC050', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C051', 'OC', 1);
+	VALUES('DC051', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C060', 'OC', 0);
+	VALUES('DC060', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C061', 'OC', 1);
+	VALUES('DC061', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C070', 'OC', 0);
+	VALUES('DC070', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C071', 'OC', 1);
+	VALUES('DC071', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C080', 'OC', 0);
+	VALUES('DC080', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C081', 'OC', 1);
+	VALUES('DC081', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C090', 'OC', 0);
+	VALUES('DC090', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C091', 'OC', 1);
+	VALUES('DC091', 'OC', 1);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C100', 'OC', 0);
+	VALUES('DC100', 'OC', 0);
 
 INSERT INTO DRAWER(DNo, SNum, Cmpt)
-	VALUES('C101', 'OC', 1);
+	VALUES('DC101', 'OC', 1);
 
 /* 
  * Populate HOOK table
  */
 
-/* Pegboard A */
+/* Pegboard A hooks */
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A01', 'PA');
+	VALUES('HA01', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A02', 'PA');
+	VALUES('HA02', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A03', 'PA');
+	VALUES('HA03', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A04', 'PA');
+	VALUES('HA04', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A05', 'PA');
+	VALUES('HA05', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A06', 'PA');
+	VALUES('HA06', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A07', 'PA');
+	VALUES('HA07', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A08', 'PA');
+	VALUES('HA08', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A09', 'PA');
+	VALUES('HA09', 'PA');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('A10', 'PA');
+	VALUES('HA10', 'PA');
 
 /* Pegboard B */
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B01', 'PB');
+	VALUES('HB01', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B02', 'PB');
+	VALUES('HB02', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B03', 'PB');
+	VALUES('HB03', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B04', 'PB');
+	VALUES('HB04', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B05', 'PB');
+	VALUES('HB05', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B06', 'PB');
+	VALUES('HB06', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B07', 'PB');
+	VALUES('HB07', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B08', 'PB');
+	VALUES('HB08', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B09', 'PB');
+	VALUES('HB09', 'PB');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('B10', 'PB');
+	VALUES('HB10', 'PB');
 
 /* Pegboard C */
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C01', 'PC');
+	VALUES('HC01', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C02', 'PC');
+	VALUES('HC02', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C03', 'PC');
+	VALUES('HC03', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C04', 'PC');
+	VALUES('HC04', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C05', 'PC');
+	VALUES('HC05', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C06', 'PC');
+	VALUES('HC06', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C07', 'PC');
+	VALUES('HC07', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C08', 'PC');
+	VALUES('HC08', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C09', 'PC');
+	VALUES('HC09', 'PC');
 
 INSERT INTO HOOK(HNo, SNum)
-	VALUES('C10', 'PC');
+	VALUES('HC10', 'PC');
 
 /* 
  * Populate STORED_IN table
