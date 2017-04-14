@@ -45,7 +45,7 @@ INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resis
 
 /* A */
 INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
-	VALUES('OA010', 1, 0, 1, 'A', NULL, NULL);
+	VALUES('OA010', 1, 0, 0, 'A', NULL, NULL);
 
 INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
 	VALUES('OA011', 1, 0, 0, 'A', NULL, NULL);
