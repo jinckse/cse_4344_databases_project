@@ -29,11 +29,15 @@ WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 /***************************************************************************/
 
  /* 
-  * Q2: "Do I have any three-foot, USB Type-A cables?" 
+  * Q2: "Do I have any three-foot, USB Type-A cables, and when did I 
+  * purchase them?"
   */
 
 /* SQL */
-SELECT * FROM ITEM WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='Type-A';
+SELECT INo, Name, IType, Amount, Length, Protocol, PDate
+FROM ITEM 
+JOIN PURCHASE_INFO ON (INum = INo)
+WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB' AND Protocol='Type-A';
 
 /* Expected Result:
  * 	+-----------+
@@ -46,13 +50,14 @@ SELECT * FROM ITEM WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='Type-
 /***************************************************************************/
 
  /* 
-  * Q3: "What is everything I have stored in a bin?"
+  * Q3: "What is everything I have stored in a bin, purchased before 2017?"
   */
 
 /* SQL */
 SELECT *
 FROM ITEM
-WHERE INo IN(
+JOIN PURCHASE_INFO ON (INum = INo)
+WHERE (PDate < '2017-01-01') AND INo IN(
 	(SELECT INum 
 	FROM STORAGE_AREA
 	JOIN STORED_IN ON (STORAGE_AREA.StoNo = STORED_IN.SISNum)
@@ -65,7 +70,6 @@ ORDER BY Name ASC;
  * 	| INO			|	...
 		+-----------+
  * 	| BAA			|	...
- * 	| BAB			|	...
  * 	| BAC			|	...
  * 	+-----------+
  */
@@ -77,13 +81,17 @@ ORDER BY Name ASC;
   */
 
 /* SQL */
-SELECT * FROM ITEM WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='Type-A';
+SELECT SISNum AS Bin_No
+FROM ITEM 
+JOIN STORED_IN ON (INum = INo)
+WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB' 
+AND Protocol='Type-C';
 
 /* Expected Result:
  * 	+-----------+
- * 	|  			|
+ * 	| Bin_No		|
  * 	+-----------+
- * 	| empty set	|
+ * 	| AA			|
  * 	+-----------+
  */
 
@@ -111,13 +119,11 @@ FROM (
 JOIN DRAWER ON (MIN_CAP_ITEMS_STORE.SISNum = DRAWER.DSNum);
 
 /* Expected Result:
- * 	+-----------+
- * 	| INO			|	...
-		+-----------+
- * 	| BAA			|	...
- * 	| BAB			|	...
- * 	| BAC			|	...
- * 	+-----------+
+ * 	+-----------+--------+--------+
+ * 	| StoNo		| DNo		| Cmpt 	|
+		+-----------+--------+--------+
+ * 	| OA021		|	DA021 | 1		|
+ * 	+-----------+--------+--------+
  */
 
 /***************************************************************************/
