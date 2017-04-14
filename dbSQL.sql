@@ -29,7 +29,7 @@ WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 /***************************************************************************/
 
  /* 
-  * Q2: "Do I have any three-foot, USB Type-A cables, and when did I 
+  * Q2: "Do I have any three-foot USB cables, and when did I 
   * purchase them?"
   */
 
@@ -37,8 +37,12 @@ WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 SELECT INo, Name, IType, Amount, Length, Protocol, PDate
 FROM ITEM 
 JOIN PURCHASE_INFO ON (INum = INo)
-WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB' AND Protocol='Type-A';
+WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB'
+GROUP BY IType
+HAVING Amount > 0
+ORDER BY PDate;
 
+/* TODO: */
 /* Expected Result:
  * 	+-----------+
  * 	|  			|
@@ -57,12 +61,14 @@ WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB' AND Protocol='Type-
 SELECT *
 FROM ITEM
 JOIN PURCHASE_INFO ON (INum = INo)
-WHERE (PDate < '2017-01-01') AND INo IN(
+WHERE INo IN(
 	(SELECT INum 
 	FROM STORAGE_AREA
 	JOIN STORED_IN ON (STORAGE_AREA.StoNo = STORED_IN.SISNum)
 	WHERE BFlag=1)
 )
+GROUP BY IType
+HAVING PDate < '2017-01-10'
 ORDER BY Name ASC;
 
 /* Expected Result:
@@ -127,3 +133,4 @@ JOIN DRAWER ON (MIN_CAP_ITEMS_STORE.SISNum = DRAWER.DSNum);
  */
 
 /***************************************************************************/
+
