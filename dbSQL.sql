@@ -8,18 +8,22 @@
 /***************************************************************************/
 
  /* 
-  * Q1: "How many 1 Ohm, 0.25 watt resistors do I have?" 
+  * Q1: "How many 1 Ohm, 0.25 watt resistors do I have, and what's their
+  * total cost?"
   */
 
 /* SQL */
-SELECT Amount FROM ITEM WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
+SELECT Amount, (Price * Amount) AS Total_Price
+FROM ITEM 
+INNER JOIN PURCHASE_INFO ON INum=INo
+WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 
 /* Expected Result:
- * 	+--------+
- * 	| Amount |
- * 	+--------+
- * 	| 5		|
- * 	+--------+
+ * 	+--------+--------------+
+ * 	| Amount | Total_Price	|
+ * 	+--------+--------------+
+ * 	| 5		| 1.25			| 
+ * 	+--------+--------------+
  */
 
 /***************************************************************************/
@@ -53,7 +57,8 @@ WHERE INo IN(
 	FROM STORAGE_AREA
 	JOIN STORED_IN ON (STORAGE_AREA.StoNo = STORED_IN.SISNum)
 	WHERE BFlag=1)
-);
+)
+ORDER BY Name ASC;
 
 /* Expected Result:
  * 	+-----------+
@@ -85,19 +90,19 @@ SELECT * FROM ITEM WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='Type-
 /***************************************************************************/
 
  /* 
-  * Q5: "WHAT'S GOIN' OWWWNN?!
+  * Q5: "Where have I stored the leaast expensive capacitors I own?"
   */
 
 /* SQL */
 SELECT DSNum AS StoNo, DNo, CAST(Cmpt AS UNSIGNED) AS Cmpt
 FROM (
-	SELECT *
+	SELECT SISNum
 	FROM (
 		SELECT INo, MIN(Price)
 		FROM (
-			SELECT INo
+			SELECT *
 			FROM ITEM 
-			WHERE Name='Capacitor'
+			WHERE Name='Capacitor' AND CFlag=1
 		) AS CAP_ITEMS
 		JOIN PURCHASE_INFO ON (CAP_ITEMS.INo = PURCHASE_INFO.INum)
 	) AS MIN_CAP_ITEMS
