@@ -37,18 +37,19 @@ WHERE CFlag=1 AND Name='Resistor' AND Power=0.25;
 SELECT INo, Name, IType, Amount, Length, Protocol, PDate
 FROM ITEM 
 JOIN PURCHASE_INFO ON (INum = INo)
-WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB'
+WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND Protocol='USB'
 GROUP BY IType
 HAVING Amount > 0
 ORDER BY PDate;
 
-/* TODO: */
 /* Expected Result:
- * 	+-----------+
- * 	|  			|
- *		+-----------+
- * 	| empty set	|
- * 	+-----------+
+ * 	+-----------+			+-----------+
+ * 	| INO			|	...	| PDate		|
+ *		+-----------+			+-----------+
+ * 	| BAE			|	...	| 2015-02-13|
+ * 	| BAA			|	...	| 2016-01-10|
+ * 	| BAD			|	...	| 2016-09-30|
+ * 	+-----------+			+-----------+
  */
 
 /***************************************************************************/
@@ -58,7 +59,7 @@ ORDER BY PDate;
   */
 
 /* SQL */
-SELECT *
+SELECT INo, Name, IType, Amount, Protocol, PDate
 FROM ITEM
 JOIN PURCHASE_INFO ON (INum = INo)
 WHERE INo IN(
@@ -69,15 +70,17 @@ WHERE INo IN(
 )
 GROUP BY IType
 HAVING PDate < '2017-01-10'
-ORDER BY Name ASC;
+ORDER BY INo ASC;
 
 /* Expected Result:
- * 	+-----------+
- * 	| INO			|	...
-		+-----------+
- * 	| BAA			|	...
- * 	| BAC			|	...
- * 	+-----------+
+ * 	+-----------+			+-----------+
+ * 	| INO			|	...	| PDate		|
+ *		+-----------+			+-----------+
+ * 	| BAA			|	...	| 2016-01-10|
+ * 	| BAC			|	...	| 2016-10-13|
+ * 	| BAD			|	...	| 2016-09-30|
+ * 	| BAE			|	...	| 2015-02-13|
+ * 	+-----------+			+-----------+
  */
 
 /***************************************************************************/
@@ -90,8 +93,8 @@ ORDER BY Name ASC;
 SELECT SISNum AS Bin_No
 FROM ITEM 
 JOIN STORED_IN ON (INum = INo)
-WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND IType='USB' 
-AND Protocol='Type-C';
+WHERE LCFlag=1 AND Name='Cable' AND Length=3 AND Protocol='USB' 
+AND IType='Type-C';
 
 /* Expected Result:
  * 	+-----------+
@@ -104,7 +107,7 @@ AND Protocol='Type-C';
 /***************************************************************************/
 
  /* 
-  * Q5: "Where have I stored the leaast expensive capacitors I own?"
+  * Q5: "Where have I stored the least expensive capacitors I own?"
   */
 
 /* SQL */
@@ -148,6 +151,6 @@ WHERE Name = 'Resistor';
  * 	+-----------+
  * 	| Qty			|
  * 	+-----------+
- * 	| 15			|
+ * 	| 14			|
  * 	+-----------+
  */

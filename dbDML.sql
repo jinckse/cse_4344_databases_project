@@ -4,6 +4,9 @@
  *	Date: 04-09-2017
  */
 
+/* Initialize trigger value */
+SET @sum = 0;
+
 /* 
  * Populate ITEM table 
  */
@@ -14,7 +17,13 @@ INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resis
 	VALUES('OA-D02-1', 'Capacitor', 'Ceramic', 10, NULL, NULL, NULL, NULL, NULL, NULL, 0.000001, 20, NULL, NULL, 0, 1, 0);
 
 INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resist, Protocol, Capac, Voltage, Amper, Power, TFlag, CFlag, LCFlag)
-	VALUES('BAA', 'Cable', 'USB', 5, NULL, NULL, NULL, 3, NULL, "Type-C", NULL, NULL, NULL, NULL, 0, 0, 1);
+	VALUES('BAA', 'Cable', 'Type-C', 5, NULL, NULL, NULL, 3, NULL, 'USB', NULL, NULL, NULL, NULL, 0, 0, 1);
+
+INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resist, Protocol, Capac, Voltage, Amper, Power, TFlag, CFlag, LCFlag)
+	VALUES('BAD', 'Cable', 'Type-A', 5, NULL, NULL, NULL, 3, NULL, 'USB', NULL, NULL, NULL, NULL, 0, 0, 1);
+
+INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resist, Protocol, Capac, Voltage, Amper, Power, TFlag, CFlag, LCFlag)
+	VALUES('BAE', 'Cable', 'Type-B', 5, NULL, NULL, NULL, 3, NULL, 'USB', NULL, NULL, NULL, NULL, 0, 0, 1);
 
 INSERT INTO ITEM(INo, Name, IType, Amount, CalDate, Status, Gauge, Length, Resist, Protocol, Capac, Voltage, Amper, Power, TFlag, CFlag, LCFlag)
 	VALUES('PA-H02', 'Hammer', 'Deadblow', 1, NULL, "Availible", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0);
@@ -330,6 +339,12 @@ INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
 INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
 	VALUES('AC', 0, 0, 1, NULL, NULL, 'AC');
 
+INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
+	VALUES('AD', 0, 0, 1, NULL, NULL, 'AD');
+
+INSERT INTO STORAGE_AREA(StoNo, OFlag, PFlag, BFlag, OLabel, PLabel, BLabel)
+	VALUES('AE', 0, 0, 1, NULL, NULL, 'AE');
+
 /* 
  * Populate DRAWER table 
  */
@@ -642,6 +657,12 @@ INSERT INTO STORED_IN(INum, SISNum, Qty)
 	VALUES('BAC', 'AC', 0);
 
 INSERT INTO STORED_IN(INum, SISNum, Qty)
+	VALUES('BAD', 'AD', 0);
+
+INSERT INTO STORED_IN(INum, SISNum, Qty)
+	VALUES('BAE', 'AE', 0);
+
+INSERT INTO STORED_IN(INum, SISNum, Qty)
 	VALUES('OA-D01-0', 'OA010', 0);
 
 INSERT INTO STORED_IN(INum, SISNum, Qty)
@@ -675,8 +696,16 @@ INSERT INTO PURCHASE_INFO(INum, PDate, Price, Supplier)
 	VALUES('BAC', '2016-10-13', 1.75, 'Fry\'s Electronics');
 
 INSERT INTO PURCHASE_INFO(INum, PDate, Price, Supplier)
+	VALUES('BAD', '2016-09-30', 1.75, 'Fry\'s Electronics');
+
+INSERT INTO PURCHASE_INFO(INum, PDate, Price, Supplier)
+	VALUES('BAE', '2015-02-13', 1.75, 'Fry\'s Electronics');
+
+INSERT INTO PURCHASE_INFO(INum, PDate, Price, Supplier)
 	VALUES('OA-D01-0', '2015-02-20', 0.25, 'Fry\'s Electronics');
 
 INSERT INTO PURCHASE_INFO(INum, PDate, Price, Supplier)
 	VALUES('OA-D03-0', '2016-03-10', 0.25, 'Fry\'s Electronics');
 
+/* Show trigger results */
+SELECT @sum AS Total_Items_Inserted;

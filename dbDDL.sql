@@ -83,7 +83,7 @@ CREATE TABLE STORED_IN (
 		FOREIGN KEY(SISNum) REFERENCES STORAGE_AREA(StoNo)
 			ON UPDATE CASCADE ON DELETE CASCADE,
 
-	Qty					SMALlINT						DEFAULT 0
+	Qty					SMALLINT						DEFAULT 0
 );
 
 CREATE TABLE PURCHASE_INFO (
@@ -96,3 +96,9 @@ CREATE TABLE PURCHASE_INFO (
 	Price					DECIMAL(10,2)				NOT NULL,
 	Supplier				VARCHAR(50)					NOT NULL
 );
+
+/* Triggers */
+
+/* Trigger to count the total items added to inventory */
+CREATE TRIGGER T_Insert_Amt BEFORE INSERT ON ITEM
+FOR EACH ROW SET @sum = @sum + NEW.Amount;
