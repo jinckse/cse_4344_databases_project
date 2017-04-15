@@ -134,3 +134,20 @@ JOIN DRAWER ON (MIN_CAP_ITEMS_STORE.SISNum = DRAWER.DSNum);
 
 /***************************************************************************/
 
+ /* 
+  * Q6: "How many Resistors do I have stored in the system?"
+  */
+
+/* SQL */
+SELECT SUM(Amount) AS Qty
+FROM ITEM
+JOIN STORED_IN ON (INum = INo)
+WHERE Name = 'Resistor';
+
+/* Expected Result:
+ * 	+-----------+
+ * 	| Qty			|
+ * 	+-----------+
+ * 	| 15			|
+ * 	+-----------+
+ */
